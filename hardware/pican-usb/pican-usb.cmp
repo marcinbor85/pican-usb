@@ -1,0 +1,339 @@
+Cmp-Mod V01 Created by PcbNew   date = Sun 11 Feb 2018 13:35:13 CET
+
+BeginCmp
+TimeStamp = 5A80CF49
+Path = /5A77E9A9
+Reference = J3;
+ValeurCmp = GOLDPIN_2x2;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x02_Pitch2.54mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CF41
+Path = /5A77E481
+Reference = J2;
+ValeurCmp = GOLDPIN_1x5;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB8F
+Path = /5A77B922
+Reference = U1;
+ValeurCmp = USBLC6-2SC6;
+IdModule  = TO_SOT_Packages_SMD:SOT-23-6;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB49
+Path = /5A77B723
+Reference = J4;
+ValeurCmp = 15EDGRC-3.5/3P;
+IdModule  = TerminalBlock_4UCON:TerminalBlock_4UCON_19963_03x3.5mm_Straight;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB31
+Path = /5A775FD3
+Reference = J1;
+ValeurCmp = USB_B;
+IdModule  = Connectors:USB_B;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB27
+Path = /5A77A69F
+Reference = D3;
+ValeurCmp = ESD24VS2U;
+IdModule  = TO_SOT_Packages_SMD:SOT-23;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB20
+Path = /5A7798E3
+Reference = D2;
+ValeurCmp = ESD24VS2U;
+IdModule  = TO_SOT_Packages_SMD:SOT-23;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB19
+Path = /5A77F9C4
+Reference = C19;
+ValeurCmp = 10n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB13
+Path = /5A7780B5
+Reference = C18;
+ValeurCmp = 10n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB07
+Path = /5A78E4B8
+Reference = C16;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CB01
+Path = /5A793921
+Reference = C15;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CAFB
+Path = /5A799904
+Reference = C14;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CAF5
+Path = /5A782D68
+Reference = C13;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80CAE9
+Path = /5A79725D
+Reference = C11;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D3E0
+Path = /5A77634C
+Reference = J5;
+ValeurCmp = DB9_Male;
+IdModule  = Connectors_DSub:DSUB-9_Male_Horizontal_Pitch2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4AD
+Path = /5A777117
+Reference = C1;
+ValeurCmp = 10n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4B2
+Path = /5A78AA68
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4B7
+Path = /5A776C02
+Reference = C3;
+ValeurCmp = 10n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4BC
+Path = /5A78AB62
+Reference = C4;
+ValeurCmp = 10u/10V;
+IdModule  = Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4C1
+Path = /5A79FC2D
+Reference = C5;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4C6
+Path = /5A77688E
+Reference = C6;
+ValeurCmp = 22p;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4CB
+Path = /5A77C243
+Reference = C7;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4D0
+Path = /5A77693B
+Reference = C8;
+ValeurCmp = 22p;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4D5
+Path = /5A77C0C4
+Reference = C9;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4DA
+Path = /5A77C136
+Reference = C10;
+ValeurCmp = 10u/10V;
+IdModule  = Capacitors_Tantalum_SMD:CP_Tantalum_Case-A_EIA-3216-18_Reflow;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4DF
+Path = /5A797263
+Reference = C12;
+ValeurCmp = 47u/10V;
+IdModule  = Capacitors_Tantalum_SMD:CP_Tantalum_Case-B_EIA-3528-21_Reflow;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4E4
+Path = /5A78E6D2
+Reference = C17;
+ValeurCmp = 47u/10V;
+IdModule  = Capacitors_Tantalum_SMD:CP_Tantalum_Case-B_EIA-3528-21_Reflow;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4E9
+Path = /5A777193
+Reference = R1;
+ValeurCmp = 1M;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4EE
+Path = /5A776668
+Reference = R2;
+ValeurCmp = BLM21PG300SN1D;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4F3
+Path = /5A79FD05
+Reference = R3;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4F8
+Path = /5A79FB21
+Reference = R4;
+ValeurCmp = 100R;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D4FD
+Path = /5A778CEB
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D502
+Path = /5A7B8C5C
+Reference = R6;
+ValeurCmp = 330R;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D507
+Path = /5A7B8DC8
+Reference = R7;
+ValeurCmp = 330R;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D50C
+Path = /5A777622
+Reference = R8;
+ValeurCmp = 68R;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D511
+Path = /5A777864
+Reference = R9;
+ValeurCmp = 68R;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D516
+Path = /5A77F9CA
+Reference = R10;
+ValeurCmp = 1M;
+IdModule  = Resistors_SMD:R_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D875
+Path = /5A775F7A
+Reference = U2;
+ValeurCmp = PIC18F26K83-I/SS;
+IdModule  = Housings_SSOP:SSOP-28_5.3x10.2mm_Pitch0.65mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80D895
+Path = /5A776191
+Reference = U3;
+ValeurCmp = FT245RL;
+IdModule  = Housings_SSOP:SSOP-28_5.3x10.2mm_Pitch0.65mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A80DC28
+Path = /5A7761D4
+Reference = U5;
+ValeurCmp = ISO1050DUB;
+IdModule  = Housings_DIP:SMDIP-8_W9.53mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A7F4FFE
+Path = /5A7767FF
+Reference = Y1;
+ValeurCmp = 16MHz;
+IdModule  = Crystals:Crystal_SMD_3225-4pin_3.2x2.5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5A829C39
+Path = /5A7B8853
+Reference = D1;
+ValeurCmp = L-934EB/2;
+IdModule  = LEDs:LED_D3.0mm_Horizontal_O6.35mm_Z10.0mm;
+EndCmp
+
+EndListe

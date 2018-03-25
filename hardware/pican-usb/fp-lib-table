@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name mb_special)(type KiCad)(uri /home/mborowicz/KiCad/libraries/footprints/mb_special.pretty)(options "")(descr ""))
+)
