@@ -9,3 +9,5 @@ Open-Hardware CAN-USB interface with optoisolation
 - virtual serial port (FT245 based)
 - switchable build-in CAN terminal-resistor
 - EMI and EMC protection
+
+![Alt text](hardware/pican-usb/doc/pican-usb_mounted.jpg?raw=true "Board")
