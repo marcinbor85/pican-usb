@@ -359,3 +359,26 @@ slcan_parse_end:
 		slcan->iface->send_byte(SLCAN_ERROR_BYTE);
 	}
 }
+
+void slcan_tx_service(struct slcan_object *slcan)
+{
+	if (slcan->std_tx_cntr > 0) {
+		slcan->std_tx_cntr--;
+		slcan->iface->send_byte('z');
+		slcan->iface->send_byte(SLCAN_END_LINE_BYTE);
+	}
+	if (slcan->ext_tx_cntr > 0) {
+		slcan->ext_tx_cntr--;
+		slcan->iface->send_byte('Z');
+		slcan->iface->send_byte(SLCAN_END_LINE_BYTE);
+	}
+}
+
+void slcan_tx_acknowledge(struct slcan_object *slcan, struct can_frame *frame)
+{
+	if (frame->extended != 0) {
+		slcan->ext_tx_cntr++;
+	} else {
+		slcan->std_tx_cntr++;
+	}
+}

@@ -47,11 +47,15 @@ struct slcan_object {
 	uint32_t baudrate;
 	uint8_t buf[SLCAN_BUFFER_SIZE];
 	uint8_t size;
+	uint8_t std_tx_cntr;
+	uint8_t ext_tx_cntr;
 };
 
 void slcan_init(struct slcan_object *slcan, const struct slcan_interface *iface);
 void slcan_parse(struct slcan_object *slcan, uint8_t b);
 void slcan_send_frame(struct slcan_object *slcan, struct can_frame *frame);
+void slcan_tx_service(struct slcan_object *slcan);
+void slcan_tx_acknowledge(struct slcan_object *slcan, struct can_frame *frame);
 
 #endif	/* SLCAN_H */
 
