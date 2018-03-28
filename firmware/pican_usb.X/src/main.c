@@ -20,10 +20,11 @@ static uint8_t flash_state = 0;
 static uint32_t last_tick = 0;
 static uint32_t flash_tick = 0;
 
-static void send_byte(uint8_t b)
-{
-	while (ft245_put_byte(&ft245, b) == 0) {};
-}
+static struct slcan_object slcan;
+
+static const uint8_t unique_serial[] = "FFFF";
+static const uint8_t firmware_version[] = "0100";
+static const uint8_t hardware_version[] = "0100";
 
 static uint8_t recv_frame(struct can_frame *frame)
 {
@@ -69,11 +70,10 @@ static uint8_t get_status(void)
 	return can_get_status();
 }
 
-static const uint8_t unique_serial[] = "FFFF";
-static const uint8_t firmware_version[] = "0100";
-static const uint8_t hardware_version[] = "0100";
-
-static struct slcan_object slcan;
+static void send_byte(uint8_t b)
+{
+	while (ft245_put_byte(&ft245, b) == 0) {};
+}
 
 static struct slcan_interface slcan_iface = {
 	recv_frame,
@@ -89,12 +89,7 @@ static struct slcan_interface slcan_iface = {
 void can_send_callback(struct can_frame *frame)
 {
 	flash_flag = 1;
-	
-	if (frame->extended != 0) {
-		ext_ack_cntr++;
-	} else {
-		std_ack_cntr++;
-	}
+	slcan_tx_acknowledge(&slcan, frame);
 }
 
 static void clear_watchdog(void)
@@ -102,11 +97,68 @@ static void clear_watchdog(void)
 	CLRWDT();
 }
 
-void main(void)
+static void leds_service(void)
+{
+	if (tick_get_value() - last_tick >= ((open_flag == 0) ? 500UL : 100UL)) {
+		last_tick = tick_get_value();
+		leds_toggle(LEDS_TYPE_OK);
+	}
+
+	switch (flash_state) {
+	case 0:
+		if (flash_flag == 1) {
+			flash_flag = 0;
+			flash_state = 1;
+		}
+		break;
+	case 1:
+		flash_tick = tick_get_value();
+		leds_set(LEDS_TYPE_RXTX, 1);
+		flash_state = 2;
+		break;
+	case 2:
+		if (tick_get_value() - flash_tick >= 50UL) {
+			flash_tick = tick_get_value();
+			leds_set(LEDS_TYPE_RXTX, 0);
+			flash_state = 3;
+		}
+		break;
+	case 3:
+		if (tick_get_value() - flash_tick >= 50UL) {
+			if (flash_flag != 0) {
+				flash_flag = 0;
+				flash_state = 1;
+			} else {
+				leds_set(LEDS_TYPE_RXTX, 0);
+				flash_state = 0;
+			}
+		}
+		break;
+	}
+}
+
+static void app_service(void)
 {
 	uint8_t b;
 	struct can_frame frame;
 	
+	if (ft245_get_byte(&ft245, &b) != 0) {
+		slcan_parse(&slcan, b);
+	}
+
+	if (open_flag != 0) {
+		if (can_recv(&frame) != 0) {
+			flash_flag = 1;
+			slcan_send_frame(&slcan, &frame);
+		}
+		can_disable_tx_isr();
+		slcan_tx_service(&slcan);
+		can_enable_tx_isr();
+	}
+}
+
+void main(void)
+{	
 	INTCON0bits.GIE = 0;
 	CLRWDT();
 	
@@ -135,67 +187,8 @@ void main(void)
 	leds_set(LEDS_TYPE_RXTX, 0);
 		
 	while (1) {
-		if (tick_get_value() - last_tick >= ((open_flag == 0) ? 500UL : 100UL)) {
-			last_tick = tick_get_value();
-			leds_toggle(LEDS_TYPE_OK);
-		}
-		
-		switch (flash_state) {
-		case 0:
-			if (flash_flag == 1) {
-				flash_flag = 0;
-				flash_state = 1;
-			}
-			break;
-		case 1:
-			flash_tick = tick_get_value();
-			leds_set(LEDS_TYPE_RXTX, 1);
-			flash_state = 2;
-			break;
-		case 2:
-			if (tick_get_value() - flash_tick >= 50UL) {
-				flash_tick = tick_get_value();
-				leds_set(LEDS_TYPE_RXTX, 0);
-				flash_state = 3;
-			}
-			break;
-		case 3:
-			if (tick_get_value() - flash_tick >= 50UL) {
-				if (flash_flag != 0) {
-					flash_flag = 0;
-					flash_state = 1;
-				} else {
-					leds_set(LEDS_TYPE_RXTX, 0);
-					flash_state = 0;
-				}
-			}
-			break;
-		}
-		
-		if (ft245_get_byte(&ft245, &b) != 0) {
-			slcan_parse(&slcan, b);
-		}
-		
-		if (open_flag != 0) {
-			if (can_recv(&frame) != 0) {
-				flash_flag = 1;
-				slcan_send_frame(&slcan, &frame);
-			}
-			if (std_ack_cntr != 0) {
-				can_disable_tx_isr();
-				std_ack_cntr--;
-				can_enable_tx_isr();
-				send_byte('z');
-				send_byte(SLCAN_END_LINE_BYTE);
-			}
-			if (ext_ack_cntr != 0) {
-				can_disable_tx_isr();
-				ext_ack_cntr--;
-				can_enable_tx_isr();
-				send_byte('Z');
-				send_byte(SLCAN_END_LINE_BYTE);
-			}
-		}
+		leds_service();
+		app_service();
 		
 		if (ft245_is_enumerated() != 0)
 			CLRWDT();
